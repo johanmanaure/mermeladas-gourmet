@@ -1,0 +1,52 @@
+/* ==========================================================
+   VARIABLES: colores, tipografías y modo claro/oscuro
+   ========================================================== */
+
+:root {
+  /* Colores de marca */
+  --maracuya: #F2B705;
+  --lulo:     #8DBB2F;
+  --mango:    #FF8A1F;
+  --oscuro:   #1a0f22;          /* texto sobre colores de fruta */
+  --acento:   var(--maracuya);  /* cambia según el sabor elegido */
+
+  /* Modo oscuro (por defecto) */
+  --fondo:  #0b0a0b;
+  --texto:  #f5eefa;
+  --tarjeta:#17131a;
+  --suave:  #a99bb5;
+  --linea:  #ffffff1f;
+
+  /* Tipografías */
+  --titulos: 'Fraunces', Georgia, serif;
+  --cuerpo:  'Nunito Sans', system-ui, sans-serif;
+
+  color-scheme: dark;
+
+  /* Margen seguro en celulares con notch */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Modo claro automático según el dispositivo */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --fondo:  #faf5ff;
+    --texto:  #241030;
+    --tarjeta:#ffffff;
+    --suave:  #6b5478;
+    --linea:  #24103022;
+    color-scheme: light;
+  }
+}
+
+/* Forzar modo claro con <html data-theme="light"> */
+:root[data-theme="light"] {
+  --fondo:  #faf5ff;
+  --texto:  #241030;
+  --tarjeta:#ffffff;
+  --suave:  #6b5478;
+  --linea:  #24103022;
+  color-scheme: light;
+}

@@ -1,0 +1,134 @@
+/* ==========================================================
+   BASE: reset, tipografía, botones y animación de aparición
+   ========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px);
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 400 1rem/1.6 var(--cuerpo);
+  overflow-x: hidden;
+}
+
+/* Tapa la zona del notch cuando el menú es fijo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--fondo);
+  z-index: 49;
+}
+
+h1, h2, h3 {
+  font-family: var(--titulos);
+  line-height: 1.08;
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  margin-bottom: 12px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--maracuya);
+  outline-offset: 3px;
+}
+
+/* ---------- Secciones ---------- */
+section {
+  max-width: 1080px;
+  margin: auto;
+  padding: 96px 20px;
+}
+
+.seccion__etiqueta {
+  color: var(--acento);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.seccion__texto {
+  color: var(--suave);
+  max-width: 54ch;
+  margin: 0 0 40px;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-block;
+  border: 0;
+  border-radius: 99px;
+  padding: 13px 26px;
+  background: var(--acento);
+  color: var(--oscuro);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.boton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--acento) 45%, transparent);
+}
+
+.boton--borde {
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid var(--linea);
+}
+
+.boton--chico {
+  padding: 8px 18px;
+  font-size: .9rem;
+}
+
+/* ---------- Animación de aparición al hacer scroll ---------- */
+.aparece {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity .8s, transform .8s cubic-bezier(.2, .8, .2, 1);
+}
+
+.aparece.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Barra de progreso del scroll ---------- */
+#barra-progreso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--maracuya), var(--lulo), var(--mango));
+  z-index: 60;
+}
+
+/* ---------- Respetar "reducir movimiento" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .aparece { opacity: 1; transform: none; }
+}

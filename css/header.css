@@ -1,0 +1,42 @@
+/* ==========================================================
+   MENÚ SUPERIOR
+   ========================================================== */
+
+.menu {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: color-mix(in srgb, var(--fondo) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea);
+}
+
+.menu__marca {
+  margin-right: auto;
+  font: 800 1.2rem var(--titulos);
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.menu__enlace {
+  padding: 6px 12px;
+  border-radius: 99px;
+  color: var(--suave);
+  font-size: .92rem;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.menu__enlace:hover {
+  color: var(--texto);
+  background: var(--linea);
+}
+
+/* En celular solo se ve la marca y el botón "Pedir" */
+@media (max-width: 760px) {
+  .menu__enlace { display: none; }
+}

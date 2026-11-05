@@ -1,0 +1,55 @@
+/* ==========================================================
+   PREGUNTAS FRECUENTES (acordeón)
+   ========================================================== */
+
+.faq {
+  max-width: 720px;
+}
+
+.pregunta {
+  border-bottom: 1px solid var(--linea);
+}
+
+.pregunta button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  font: 700 1.1rem var(--cuerpo);
+}
+
+/* El "+" gira y se vuelve "×" al abrir */
+.pregunta button::after {
+  content: "+";
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: transform .3s;
+}
+
+.pregunta.abierta button::after {
+  transform: rotate(135deg);
+}
+
+/* Truco de grid para animar la altura de 0 a automática */
+.pregunta__respuesta {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .35s;
+}
+
+.pregunta.abierta .pregunta__respuesta {
+  grid-template-rows: 1fr;
+}
+
+.pregunta__respuesta p {
+  margin: 0;
+  overflow: hidden;
+  color: var(--suave);
+}
+
+.pregunta.abierta .pregunta__respuesta p {
+  padding-bottom: 18px;
+}

@@ -1,0 +1,43 @@
+/* ==========================================================
+   LLAMADA FINAL, PIE DE PÁGINA Y AVISO EMERGENTE
+   ========================================================== */
+
+.llamada {
+  max-width: 1040px;
+  margin: 0 auto 60px;
+  padding: 60px 20px;
+  text-align: center;
+  background: radial-gradient(60% 100% at 50% 0, color-mix(in srgb, var(--mango) 25%, transparent), var(--tarjeta));
+  border: 1px solid var(--linea);
+  border-radius: 34px;
+}
+
+.llamada .seccion__texto {
+  margin: 0 auto 24px;
+}
+
+.pie {
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--suave);
+  border-top: 1px solid var(--linea);
+}
+
+/* Aviso que sube desde abajo (ej. "1 frasco agregado").
+   z-index 90: se ve por encima del visor (que usa 80) */
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+  z-index: 90;
+  padding: 12px 22px;
+  background: #2B1238;
+  color: #fff;
+  border-radius: 99px;
+  transform: translate(-50%, 120px);
+  transition: .4s;
+}
+
+.aviso.visible {
+  transform: translate(-50%, 0);
+}

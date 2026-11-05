@@ -1,0 +1,85 @@
+/* ==========================================================
+   JUEGO DEL DADO
+   ========================================================== */
+
+.juego {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+/* ---------- Tablero 4 x 3 ---------- */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.cuadro {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--maracuya), var(--mango));
+  border-radius: 16px;
+  color: var(--oscuro);
+  font: 800 1.6rem var(--titulos);
+  text-align: center;
+  transition: transform .35s;
+}
+
+/* Cuadro donde está la ficha */
+.cuadro.activo {
+  outline: 3px solid var(--texto);
+  transform: translateY(-6px) scale(1.07);
+}
+
+/* Cuadro ya descubierto */
+.cuadro.abierto {
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  color: var(--texto);
+  font: 700 1.5rem var(--cuerpo);
+  animation: voltear .6s;
+}
+
+.cuadro.abierto.descuento {
+  background: var(--lulo);
+  color: #16280a;
+  font: 800 1.3rem var(--titulos);
+}
+
+/* ---------- Dado ---------- */
+.dado {
+  text-align: center;
+}
+
+.dado__cara {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.dado__cara.girando {
+  animation: girar .25s linear infinite;
+}
+
+.dado__mensaje {
+  min-height: 96px;
+  margin-top: 16px;
+  padding: 14px;
+  text-align: left;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes voltear {
+  from { transform: rotateY(180deg) scale(.8); }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}

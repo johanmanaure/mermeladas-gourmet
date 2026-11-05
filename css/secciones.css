@@ -1,0 +1,174 @@
+/* ==========================================================
+   TARJETAS, COMPARATIVA Y LÍNEA DE TIEMPO
+   ========================================================== */
+
+/* ---------- Tarjetas de beneficios ---------- */
+.cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 24px;
+  transition: transform .3s, border-color .3s;
+  --x: 50%;   /* posición del mouse, la actualiza animaciones.js */
+  --y: 50%;
+}
+
+/* Brillo que sigue al mouse */
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(260px circle at var(--x) var(--y),
+              color-mix(in srgb, var(--acento) 26%, transparent), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: var(--acento);
+}
+
+.tarjeta:hover::before {
+  opacity: 1;
+}
+
+.tarjeta > * {
+  position: relative;
+}
+
+.tarjeta__icono {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  transition: transform .4s;
+}
+
+.tarjeta:hover .tarjeta__icono {
+  transform: rotate(-12deg) scale(1.25);
+}
+
+.tarjeta h3 {
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+}
+
+.tarjeta p {
+  margin: 0;
+  color: var(--suave);
+}
+
+/* ---------- Tabla comparativa ---------- */
+.tabla-caja {
+  overflow-x: auto;
+  border: 1px solid var(--linea);
+  border-radius: 22px;
+}
+
+table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--linea);
+}
+
+th {
+  font-family: var(--titulos);
+}
+
+th:last-child {
+  color: var(--acento);
+}
+
+td:first-child {
+  font-weight: 700;
+}
+
+td:nth-child(2) {
+  color: var(--suave);
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr {
+  transition: background .2s;
+}
+
+tbody tr:hover {
+  background: var(--linea);
+}
+
+/* ---------- Línea de tiempo del proceso ---------- */
+.linea-tiempo {
+  position: relative;
+  display: grid;
+  gap: 34px;
+  padding-left: 44px;
+}
+
+/* Riel gris + relleno que crece con el scroll (--avance va de 0 a 1) */
+.linea-tiempo::before,
+.linea-tiempo::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--linea);
+}
+
+.linea-tiempo::after {
+  background: linear-gradient(var(--maracuya), var(--mango));
+  transform-origin: top;
+  transform: scaleY(var(--avance, 0));
+}
+
+.linea-tiempo > div {
+  position: relative;
+}
+
+/* Punto de cada paso */
+.linea-tiempo > div::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  background: var(--fondo);
+  border: 3px solid var(--linea);
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.linea-tiempo > div.visible::before {
+  background: var(--maracuya);
+  border-color: var(--mango);
+  transform: scale(1.15);
+}
+
+.linea-tiempo h3 {
+  font-size: 1.4rem;
+}
+
+.linea-tiempo p {
+  margin: 4px 0 0;
+  color: var(--suave);
+}

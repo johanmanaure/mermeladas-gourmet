@@ -1,0 +1,163 @@
+/* ==========================================================
+   PORTADA, FRANJA DE SABORES Y CONTADORES
+   ========================================================== */
+
+/* ---------- Portada ---------- */
+.portada {
+  position: relative;
+  overflow: hidden;
+  max-width: none;
+  padding: 70px 20px 40px;
+  background:
+    radial-gradient(60% 60% at 80% 30%, color-mix(in srgb, var(--mango) 28%, transparent), transparent),
+    radial-gradient(50% 50% at 10% 70%, color-mix(in srgb, var(--maracuya) 18%, transparent), transparent);
+}
+
+.portada__contenido {
+  max-width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  align-items: center;
+}
+
+.portada h1 {
+  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+/* Cada palabra del título cae con rebote */
+.portada h1 .palabra {
+  display: inline-block;
+  animation: caer .9s cubic-bezier(.3, 1.5, .5, 1) both;
+}
+
+.portada p {
+  max-width: 44ch;
+  margin: 20px 0 28px;
+  color: var(--suave);
+  font-size: 1.12rem;
+}
+
+.insignia {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 5px 14px;
+  border: 1px solid var(--linea);
+  border-radius: 99px;
+  font-size: .88rem;
+  animation: latido 2.5s infinite;
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.etiquetas span {
+  padding: 4px 14px;
+  border: 1px solid var(--linea);
+  border-radius: 99px;
+  color: var(--suave);
+  font-size: .88rem;
+}
+
+/* ---------- Frascos de la portada ---------- */
+.portada__frascos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 320px;
+  --mx: 0;   /* posición del mouse, la actualiza animaciones.js */
+  --my: 0;
+}
+
+.flotante {
+  animation: flotar 6s ease-in-out infinite;
+}
+
+.flotante:nth-child(2) {
+  animation-delay: -2s;
+  margin-inline: -6px;
+}
+
+.flotante:nth-child(3) {
+  animation-delay: -4s;
+}
+
+/* Inclinación según el mouse (--profundidad y --giro vienen del JS) */
+.flotante > div {
+  transform:
+    translate(calc(var(--mx) * var(--profundidad) * 1px), calc(var(--my) * var(--profundidad) * 1px))
+    rotate(var(--giro));
+  transition: transform .15s;
+}
+
+/* ---------- Franja de sabores (marquesina) ---------- */
+.franja {
+  overflow: hidden;
+  padding: 16px 0;
+  background: var(--tarjeta);
+  border-block: 1px solid var(--linea);
+}
+
+.franja > div {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  font: 800 1.6rem var(--titulos);
+  white-space: nowrap;
+  animation: marquesina 22s linear infinite;
+}
+
+.franja:hover > div {
+  animation-play-state: paused;
+}
+
+/* ---------- Contadores ---------- */
+.contadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.contador {
+  padding: 22px;
+  text-align: center;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 22px;
+}
+
+.contador b {
+  display: block;
+  font: 800 2.6rem var(--titulos);
+  color: var(--acento);
+}
+
+.contador span {
+  color: var(--suave);
+}
+
+/* ---------- Animaciones ---------- */
+@keyframes caer {
+  from { transform: translateY(-70px) rotate(-6deg); opacity: 0; }
+}
+
+@keyframes latido {
+  50% { box-shadow: 0 0 0 8px #f2b70522; }
+}
+
+@keyframes flotar {
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes marquesina {
+  to { transform: translateX(-50%); }
+}

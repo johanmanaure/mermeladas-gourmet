@@ -1,0 +1,111 @@
+/* ==========================================================
+   PEDIDO POR WHATSAPP
+   ========================================================== */
+
+.pedido {
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+}
+
+/* Fila de cada sabor */
+.pedido__fila {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+}
+
+.pedido__fila i {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background: var(--color);
+  border-radius: 50%;
+}
+
+.pedido__fila b {
+  flex: 1;
+}
+
+/* Botones − y + */
+.cantidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cantidad button {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--linea);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: .2s;
+}
+
+.cantidad button:hover {
+  background: var(--maracuya);
+  color: var(--oscuro);
+}
+
+.cantidad span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Resumen */
+.resumen {
+  padding: 18px;
+  background: var(--tarjeta);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+}
+
+.resumen div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resumen .total {
+  margin-top: 6px;
+  font: 800 1.6rem var(--titulos);
+}
+
+/* Campo de nombre */
+input {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--tarjeta);
+  color: var(--texto);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  font: inherit;
+}
+
+/* Botón verde de WhatsApp */
+.boton-whatsapp {
+  padding: 16px;
+  background: #25D366;
+  color: #073b1a;
+  border: 0;
+  border-radius: 99px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.boton-whatsapp:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 10px 26px #25d36655;
+}
+
+.boton-whatsapp:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}

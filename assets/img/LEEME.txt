@@ -1,0 +1,8 @@
+Pon aquí tus fotos con estos nombres:
+  maracuya.jpg
+  lulo.jpg
+  mango.jpg
+
+Funcionan mejor con fondo limpio o transparente (.png).
+Si usas .png, cambia la extensión en js/datos.js (constante FOTOS).
+Si una foto no existe, la página muestra un frasco dibujado con CSS.
