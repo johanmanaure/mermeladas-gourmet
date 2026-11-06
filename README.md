@@ -29,18 +29,3 @@ mermeladas-gourmet/
 │   └── main.js             arranca todo
 └── assets/img/             tus fotos: maracuya.jpg, lulo.jpg, mango.jpg
 ```
-
-## Cómo abrirla en Visual Studio Code
-
-1. **File > Open Folder** y elige `mermeladas-gourmet`.
-2. Instala la extensión **Live Server**.
-3. Clic derecho en `index.html` > **Open with Live Server**.
-
-(También funciona con doble clic en `index.html`.)
-
-## Qué cambiar primero (js/datos.js)
-
-- `WHATSAPP`: tu número con indicativo de país.
-- `PRECIO`: precio por frasco.
-- `FOTOS`: rutas de tus fotos.
-- `SABORES`, `DATOS_CURIOSOS`, `DESCUENTOS`, `PREGUNTAS`: los textos.
